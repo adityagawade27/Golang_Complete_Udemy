@@ -2,8 +2,12 @@ package main
 
 func main() {
 
-	cards := newDeck()
+	//cards := newDeckFromFile("my")
 	//fmt.Println(cards.toString())
-	cards.saveToFile("my_cards")
+	//cards.saveToFile("my_cards")
+
+	cards := newDeck()
+	cards.shuffle()
+	cards.print()
 
 }
