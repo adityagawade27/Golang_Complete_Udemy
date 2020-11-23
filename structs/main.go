@@ -13,8 +13,8 @@ type person struct {
 	contact   contactInfo
 }
 
-func (p person) updateName(newFirstName string) {
-	p.firstName = newFirstName
+func (pointerToPerson *person) updateName(newFirstName string) {
+	(*pointerToPerson).firstName = newFirstName
 }
 
 func (p person) print() {
@@ -34,9 +34,15 @@ func main() {
 		},
 	}
 
+	//jimPointer := &jim
+	// In go You can use either jim.updateName or jimPointer.updateName to refer to a function
+	// that recieves the pointer as a reciever.
+	// Go will automatically resolve the first case to a pointer.
+	// You will need to make pointer function if you need to update values in the existing struct
+	// Go will copy the struct to a new memory location and run the func there only without pointers.
 	jim.updateName("jimmy")
 	jim.print()
-
+	// Important point with go -- if we define a reciever, pointer,
 	// Print out field names and values
 	//fmt.Printf("%+v", alex)
 
